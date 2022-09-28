@@ -25,6 +25,7 @@ public class UserService implements IUserService{
      * @param userDto object with user data
      */
 
+    @Override
     public void saveUser(UserDto userDto)  {
         if (userDto.getUserEmail() != null ) {
             if (userRepository.findByUserEmail(userDto.getUserEmail()).isPresent()) {
@@ -114,6 +115,7 @@ public class UserService implements IUserService{
      * @param userEmail user email to delete
      */
 
+    @Override
     public void deleteUser(String userEmail) {
 
         if (userRepository.findByUserEmail(userEmail).isPresent()) {
@@ -165,6 +167,7 @@ public class UserService implements IUserService{
      * @param userEmail user email to find user
      * @return the call to the method toUserDto of the UserMapper class
      */
+    @Override
     public UserDto getUserByEmail(String userEmail) {
         User user = userRepository.findByUserEmail(userEmail).orElseThrow(UserNotFoundException::new);
         return userMapper.toUserDto(user);

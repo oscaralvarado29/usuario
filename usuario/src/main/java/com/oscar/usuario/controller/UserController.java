@@ -19,10 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class UserController {
 
-    private IUserService userService;
-    public UserController(IUserService userService) {
-        this.userService = userService;
-    }
+    private final IUserService userService;
 
     @Operation(summary = "Get a user by their email")
     @ApiResponses(value = {
